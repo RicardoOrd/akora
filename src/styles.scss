@@ -1,0 +1,193 @@
+// ============================================================
+// AKORA REPOSTERÍA — Global Styles
+// Design tokens, typography, reset & utilities
+// ============================================================
+
+// ── Custom Fonts ─────────────────────────────────────────────
+// Place your font files in src/assets/fonts/
+// Neon80s → display font for hero titles and brand elements
+// Salted  → decorative accent font (taglines, highlights)
+
+@font-face {
+  font-family: 'Neon80s';
+  src: url('assets/fonts/Neon.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Salted';
+  src: url('assets/fonts/Salted.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+// ── Design Tokens (CSS Custom Properties) ────────────────────
+:root {
+  // Brand palette
+  --color-primary: #1C4B98;
+  --color-primary-dark: #153a78;
+  --color-primary-light: #5d8de8;
+  --color-primary-pale: #eef2fc;
+
+  // Neutrals
+  --color-dark: #0d1b2a;
+  --color-surface: #ffffff;
+  --color-bg-secondary: #f7f8fc;
+  --color-border: #e4e9f4;
+  --color-text-muted: #6b7a99;
+
+  // Semantic
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  // Typography
+  --font-display: 'Neon80s', 'Georgia', serif;
+  --font-accent: 'Salted', 'Georgia', cursive;
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  // Layout
+  --max-width: 1280px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: clamp(1.5rem, 4vw, 3rem);
+  --spacing-xl: clamp(3rem, 6vw, 6rem);
+
+  // Radii
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  // Shadows
+  --shadow-sm: 0 1px 4px rgba(13, 27, 62, 0.07);
+  --shadow-md: 0 4px 16px rgba(13, 27, 62, 0.10);
+  --shadow-lg: 0 12px 40px rgba(13, 27, 62, 0.13);
+  --shadow-xl: 0 24px 80px rgba(13, 27, 62, 0.16);
+
+  // Motion
+  --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+// ── CSS Reset ─────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-dark);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+// ── Typography Base ───────────────────────────────────────────
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+button {
+  font-family: inherit;
+  line-height: inherit;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+// ── Google Fonts import for body font ─────────────────────────
+// Add this to index.html <head> for best performance:
+// <link rel="preconnect" href="https://fonts.googleapis.com">
+// <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+// <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+// ── Utility Classes ───────────────────────────────────────────
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+// ── Scroll padding for fixed navbar ──────────────────────────
+section[id],
+div[id] {
+  scroll-margin-top: 80px;
+}
+
+// ── Focus visible (accessibility) ────────────────────────────
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+// ── Scrollbar (optional, Webkit only) ────────────────────────
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+
+  &:hover {
+    background: var(--color-primary-light);
+  }
+}
+
+// ── Selection color ───────────────────────────────────────────
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}

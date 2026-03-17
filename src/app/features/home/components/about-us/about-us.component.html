@@ -1,0 +1,71 @@
+<section class="about" id="about">
+  <div class="about__container">
+
+    <!-- Image column -->
+    <div class="about__media">
+      <div class="about__image-frame">
+        <img
+          src="assets/images/about-us.jpg"
+          alt="El equipo de Akora Repostería en su cocina"
+          class="about__image"
+          loading="lazy"
+        />
+        <!-- Floating accent card -->
+        <div class="about__accent-card">
+          <span class="about__accent-icon">🏆</span>
+          <div>
+            <p class="about__accent-value">+3 años</p>
+            <p class="about__accent-label">de artesanía</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative blob -->
+      <div class="about__blob" aria-hidden="true"></div>
+    </div>
+
+    <!-- Text column -->
+    <div class="about__content">
+      <p class="about__eyebrow">Nuestra Historia</p>
+
+      <h2 class="about__title">
+        Nació de una<br />
+        <span class="about__title-accent">pasión genuina</span>
+      </h2>
+
+      <p class="about__text">
+        Akora comenzó como un sueño entre harina y azúcar en una pequeña cocina de Navojoa.
+        Lo que inició como postres para familia y amigos se convirtió en un proyecto de vida
+        impulsado por una sola convicción: los momentos especiales merecen sabores especiales.
+      </p>
+      <p class="about__text">
+        Hoy, cada pieza que sale de nuestra cocina lleva consigo horas de práctica, amor
+        auténtico y el compromiso de superar tus expectativas.
+      </p>
+
+      <!-- Stats row -->
+      <div class="about__stats">
+        @for (stat of stats; track stat.label) {
+          <div class="about__stat">
+            <span class="about__stat-value">{{ stat.value }}</span>
+            <span class="about__stat-label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+
+      <!-- Values -->
+      <div class="about__values">
+        @for (v of values; track v.title) {
+          <div class="about__value-item">
+            <span class="about__value-icon">{{ v.icon }}</span>
+            <div>
+              <h4 class="about__value-title">{{ v.title }}</h4>
+              <p class="about__value-desc">{{ v.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>

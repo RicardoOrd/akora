@@ -1,0 +1,42 @@
+<section class="products" id="products">
+  <div class="products__container">
+
+    <!-- Section header -->
+    <div class="products__header">
+      <p class="products__eyebrow">Nuestros Sabores</p>
+      <h2 class="products__title">Creaciones que enamoran</h2>
+      <p class="products__subtitle">
+        Cada pieza es elaborada a mano con ingredientes seleccionados.<br class="hide-mobile" />
+        Sin conservadores. Solo amor y mucho sabor.
+      </p>
+    </div>
+
+    <!-- Category filter tabs -->
+    <div class="products__filters" role="tablist">
+      @for (cat of categories; track cat.key) {
+      <button class="products__filter-btn" [class.active]="activeCategory() === cat.key" (click)="setCategory(cat.key)"
+        role="tab" [attr.aria-selected]="activeCategory() === cat.key">
+        {{ cat.label }}
+      </button>
+      }
+    </div>
+
+    <!-- Products grid -->
+    <div class="products__grid">
+      @for (product of filteredProducts; track product.id) {
+      <app-product-card [product]="product" />
+      }
+    </div>
+
+    <!-- CTA bottom -->
+    <div class="products__footer">
+      <p class="products__footer-text">¿Buscas algo especial para tu evento?</p>
+      <a href="https://wa.me/526421177322?text=Hola%2C%20me%20gustaría%20hacer%20un%20pedido%20%F0%9F%AB%A2%F0%9F%92%96%E2%98%80%EF%B8%8F"
+        target="_blank" rel="noopener" class="products__whatsapp-btn">
+        <img src="assets/icons/whatsapp.svg" alt="" aria-hidden="true" />
+        Pedir personalizado
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<section class="hero" id="hero">
+
+  <!-- Floating decorative elements -->
+  <div class="hero__deco hero__deco--1" aria-hidden="true"></div>
+  <div class="hero__deco hero__deco--2" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div class="hero__content">
+    <p class="hero__eyebrow">Repostería Artesanal</p>
+    <h1 class="hero__title">
+      Cada bocado,<br />
+      <span class="hero__title-accent">una experiencia</span>
+    </h1>
+    <p class="hero__subtitle">
+      Postres hechos con amor, ingredientes de calidad<br class="hide-mobile" />
+      y una pizca de magia para los momentos que importan.
+    </p>
+    <div class="hero__actions">
+      <button class="hero__btn hero__btn--primary" (click)="scrollToProducts()">
+        Ver productos
+      </button>
+      <button class="hero__btn hero__btn--secondary" (click)="scrollToProducts()">
+        Ordenar ahora →
+      </button>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll-hint" aria-hidden="true">
+    <span class="hero__scroll-line"></span>
+    <span class="hero__scroll-label">Desliza</span>
+  </div>
+</section>
