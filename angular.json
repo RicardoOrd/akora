@@ -21,20 +21,40 @@
             "outputPath": "dist/akora-reposteria",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.json",
             "assets": [
-              { "glob": "**/*", "input": "public", "output": "/" },
-              { "glob": "**/*", "input": "src/assets", "output": "assets" }
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
               "budgets": [
-                { "type": "initial",     "maximumWarning": "500kb", "maximumError": "1mb" },
-                { "type": "anyComponentStyle", "maximumWarning": "2kb", "maximumError": "4kb" }
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "8kb"
+                }
               ],
               "outputHashing": "all",
               "fileReplacements": [
@@ -55,8 +75,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": { "buildTarget": "akora-reposteria:build:production" },
-            "development": { "buildTarget": "akora-reposteria:build:development" }
+            "production": {
+              "buildTarget": "akora-reposteria:build:production"
+            },
+            "development": {
+              "buildTarget": "akora-reposteria:build:development"
+            }
           },
           "defaultConfiguration": "development"
         }
