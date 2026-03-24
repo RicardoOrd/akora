@@ -1,33 +1,41 @@
 <section class="hero" id="hero">
 
-  <!-- Floating decorative elements -->
-  <div class="hero__deco hero__deco--1" aria-hidden="true"></div>
-  <div class="hero__deco hero__deco--2" aria-hidden="true"></div>
+  <!-- Floating decorative particles -->
+  <div class="hero__particles" aria-hidden="true">
+    <span class="hero__particle hero__particle--1"></span>
+    <span class="hero__particle hero__particle--2"></span>
+    <span class="hero__particle hero__particle--3"></span>
+    <span class="hero__particle hero__particle--4"></span>
+    <span class="hero__particle hero__particle--5"></span>
+  </div>
 
   <!-- Content -->
   <div class="hero__content">
-    <p class="hero__eyebrow">Repostería Artesanal</p>
     <h1 class="hero__title">
       Cada bocado,<br />
       <span class="hero__title-accent">una experiencia</span>
     </h1>
+
     <p class="hero__subtitle">
       Postres hechos con amor, ingredientes de calidad<br class="hide-mobile" />
       y una pizca de magia para los momentos que importan.
     </p>
+
     <div class="hero__actions">
       <button class="hero__btn hero__btn--primary" (click)="scrollToProducts()">
-        Ver productos
+        Ordenar Ahora
       </button>
-      <button class="hero__btn hero__btn--secondary" (click)="scrollToProducts()">
-        Ordenar ahora →
+      <button class="hero__btn hero__btn--ghost" (click)="scrollToProducts()">
+        Ver menú ↓
       </button>
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="hero__scroll-hint" aria-hidden="true">
-    <span class="hero__scroll-line"></span>
-    <span class="hero__scroll-label">Desliza</span>
+  <!-- Bottom wave separator -->
+  <div class="hero__wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 C360,120 720,40 1080,80 C1260,100 1380,60 1440,80 L1440,120 L0,120 Z" fill="#f7f8fc" />
+    </svg>
   </div>
+
 </section>

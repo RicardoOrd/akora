@@ -1,42 +1,35 @@
 <nav class="navbar" [class.scrolled]="isScrolled()">
   <div class="navbar__container">
 
-    <!-- Logo -->
+    <!-- Left: Menu button -->
+    <button class="navbar__menu-btn" (click)="toggleMenu()" [class.active]="isMenuOpen()" aria-label="Abrir menú">
+      <span class="navbar__menu-icon">
+        <span></span><span></span><span></span>
+      </span>
+      <span class="navbar__menu-label">Menú</span>
+    </button>
+
+    <!-- Center: Logo -->
     <a class="navbar__logo" (click)="scrollTo('hero')" role="button" tabindex="0">
       <img src="assets/images/logo.png" alt="Akora Repostería" class="navbar__logo-img" />
     </a>
 
-    <!-- Desktop nav links -->
-    <ul class="navbar__links">
-      @for (link of navLinks; track link.fragment) {
-        <li>
-          <button class="navbar__link" (click)="scrollTo(link.fragment)">
-            {{ link.label }}
-          </button>
-        </li>
-      }
-    </ul>
-
-    <!-- CTA Button -->
+    <!-- Right: CTA Button -->
     <button class="navbar__cta" (click)="scrollTo('products')">
-      Ordenar ahora
-    </button>
-
-    <!-- Cart icon (Fase 2+) -->
-    <!-- <button class="navbar__cart" routerLink="/cart">
-      <span class="material-icons">shopping_bag</span>
-      <span class="navbar__cart-badge">0</span>
-    </button> -->
-
-    <!-- Hamburger -->
-    <button class="navbar__hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen()" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
+      Ordenar Ahora
     </button>
 
   </div>
 
-  <!-- Mobile drawer -->
+  <!-- Slide-in drawer (left side) -->
+  <div class="navbar__overlay" [class.open]="isMenuOpen()" (click)="toggleMenu()"></div>
   <div class="navbar__drawer" [class.open]="isMenuOpen()">
+    <div class="navbar__drawer-header">
+      <img src="assets/images/logo.png" alt="Akora" class="navbar__drawer-logo" />
+      <button class="navbar__drawer-close" (click)="toggleMenu()" aria-label="Cerrar menú">
+        ✕
+      </button>
+    </div>
     <ul class="navbar__drawer-links">
       @for (link of navLinks; track link.fragment) {
         <li>
@@ -44,8 +37,8 @@
         </li>
       }
     </ul>
-    <button class="navbar__cta navbar__cta--mobile" (click)="scrollTo('products')">
-      Ordenar ahora
+    <button class="navbar__cta navbar__cta--drawer" (click)="scrollTo('products')">
+      Ordenar Ahora
     </button>
   </div>
 </nav>

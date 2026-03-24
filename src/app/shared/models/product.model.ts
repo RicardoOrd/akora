@@ -11,12 +11,10 @@ export interface Product {
 }
 
 export type ProductCategory =
-  | 'cake'
-  | 'cupcake'
-  | 'cookie'
-  | 'macaron'
-  | 'bread'
-  | 'seasonal';
+  | 'rol'
+  | 'galleta'
+  | 'cheesecake'
+  | 'bollito';
 
 export interface CartItem {
   product: Product;

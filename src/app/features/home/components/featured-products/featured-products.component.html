@@ -21,10 +21,26 @@
       }
     </div>
 
-    <!-- Products grid -->
-    <div class="products__grid">
-      @for (product of filteredProducts; track product.id) {
-      <app-product-card [product]="product" />
+    <!-- Product Showcase -->
+    <div class="products__showcase">
+      @for (product of filteredProducts; track product.id; let i = $index) {
+      <article class="showcase-card" [class.showcase-card--reverse]="i % 2 !== 0">
+        <div class="showcase-card__media">
+          <img [src]="product.imageUrl" [alt]="product.name" class="showcase-card__image" loading="lazy" />
+        </div>
+        <div class="showcase-card__content">
+          <h3 class="showcase-card__name">{{ product.name }}</h3>
+          <p class="showcase-card__desc">{{ product.description }}</p>
+          <div class="showcase-card__meta">
+            <span class="showcase-card__price">${{ product.price | number:'1.0-0' }} MXN</span>
+          </div>
+          <div class="showcase-card__actions">
+            <button class="showcase-card__btn showcase-card__btn--order" (click)="orderProduct(product)">
+              Ordenar Ahora
+            </button>
+          </div>
+        </div>
+      </article>
       }
     </div>
 
