@@ -32,9 +32,9 @@
     </div>
     <ul class="navbar__drawer-links">
       @for (link of navLinks; track link.fragment) {
-        <li>
-          <button (click)="scrollTo(link.fragment)">{{ link.label }}</button>
-        </li>
+      <li>
+        <button (click)="scrollTo(link.fragment)">{{ link.label }}</button>
+      </li>
       }
     </ul>
     <button class="navbar__cta navbar__cta--drawer" (click)="scrollTo('products')">
