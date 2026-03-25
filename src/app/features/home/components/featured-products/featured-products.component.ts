@@ -12,14 +12,17 @@ import { Product } from '../../../../shared/models/product.model';
 })
 export class FeaturedProductsComponent implements OnInit {
   products = signal<Product[]>([]);
-  activeCategory = signal<string>('all');
+  activeCategory = signal<string>('galleta');
+
+  // Color hues for card backgrounds — cycles through
+  cardHues = ['olive', 'blush', 'lavender', 'peach', 'sky', 'mint'];
 
   categories = [
-    { key: 'all', label: 'Todos' },
     { key: 'galleta', label: 'Galletas Crumbl' },
     { key: 'rol', label: 'Roles de Canela' },
     { key: 'cheesecake', label: 'Cheesecake' },
     { key: 'bollito', label: 'Bollitos' },
+    { key: 'all', label: 'Todos' },
   ];
 
   // Productos del menú real de Akora
@@ -78,7 +81,7 @@ export class FeaturedProductsComponent implements OnInit {
       name: 'Galleta Ferrero',
       description: 'Galleta con chocolate y avellana estilo Ferrero Rocher. Crujiente y decadente.',
       price: 0,
-      imageUrl: 'assets/images/products/galleta-ferrero.jpg',
+      imageUrl: 'assets/images/products/galleta-ferrero.png',
       category: 'galleta',
       isAvailable: true,
     },
