@@ -1,3 +1,7 @@
+// ═══════════════════════════════════════════════════════
+// FEATURED PRODUCTS SECTION
+// ═══════════════════════════════════════════════════════
+
 .products {
   padding: 5rem 0 7rem;
   background: var(--color-bg-secondary);
@@ -85,7 +89,7 @@
   &__showcase {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   // ───────────── Bottom CTA ─────────────
@@ -136,28 +140,79 @@
 }
 
 // ═══════════════════════════════════════════════════════
-// SHOWCASE CARD — Full-width immersive product section
+// SHOWCASE CARD — Immersive horizontal product card
+// Inspired by the "Dubai Chocolate Brownie" reference
 // ═══════════════════════════════════════════════════════
+
+// Color palette for card backgrounds (soft pastels)
+$card-hues: (
+  'olive': (bg: #d5dbb3, text: #2a2f1b),
+  'blush': (bg: #f6c1d0, text: #3b1a24),
+  'lavender': (bg: #d4c5f9, text: #2a1f47),
+  'peach': (bg: #f7d5b3, text: #3b2710),
+  'sky': (bg: #b3d9f0, text: #1a2f3b),
+  'mint': (bg: #b8e6d0, text: #1a3b2a),
+);
 
 .showcase-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
-  min-height: 420px;
-  background: var(--color-surface);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  align-items: center;
+  min-height: 380px;
+  border-radius: 24px;
+  overflow: visible; // ← let image break out
+  position: relative;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow),
+    background-color 0.4s ease;
+
+  // Default: white with subtle border
+  background: #ffffff;
   border: 1px solid var(--color-border);
-  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
 
   &:hover {
-    box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 
     .showcase-card__image {
-      transform: scale(1.05);
+      transform: scale(1.06) rotate(-1deg);
     }
+  }
+
+  // ── Color variants: appear on hover (desktop) & active/tap (mobile) ──
+  &[data-hue='olive']:hover,
+  &[data-hue='olive']:active {
+    background: #d5dbb3;
+    border-color: #d5dbb3;
+  }
+
+  &[data-hue='blush']:hover,
+  &[data-hue='blush']:active {
+    background: #f6c1d0;
+    border-color: #f6c1d0;
+  }
+
+  &[data-hue='lavender']:hover,
+  &[data-hue='lavender']:active {
+    background: #d4c5f9;
+    border-color: #d4c5f9;
+  }
+
+  &[data-hue='peach']:hover,
+  &[data-hue='peach']:active {
+    background: #f7d5b3;
+    border-color: #f7d5b3;
+  }
+
+  &[data-hue='sky']:hover,
+  &[data-hue='sky']:active {
+    background: #b3d9f0;
+    border-color: #b3d9f0;
+  }
+
+  &[data-hue='mint']:hover,
+  &[data-hue='mint']:active {
+    background: #9E6C59;
+    border-color: #9E6C59;
   }
 
   // Reversed layout for alternating effect
@@ -169,103 +224,144 @@
     .showcase-card__content {
       order: 1;
     }
+
+    // flip overflow side
+    .showcase-card__image {
+      transform-origin: right center;
+    }
   }
 
-  // ─── Media ───
+  // ─── Media (Image) ───
   &__media {
     position: relative;
-    overflow: hidden;
-    background: var(--color-bg-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    max-height: 420px;
+    padding: 1.5rem;
+    overflow: visible; // image breaks outside
+    z-index: 2;
   }
 
   &__image {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
+    width: 100%;
+    max-width: 400px;
     height: auto;
     object-fit: contain;
-    transition: transform 0.6s ease;
-    border-radius: var(--radius-md);
+    transform-origin: left center;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.18));
+
+    // Make the image pop outside the card boundary
+    margin-left: -2.5rem;
   }
 
-  // ─── Content ───
+  // ─── Content (Text side) ───
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3rem;
-    gap: 0.5rem;
+    padding: 2.5rem 3.5rem;
+    gap: 0.35rem;
+    position: relative;
+    z-index: 1;
   }
 
+  // ─── Badge / Tag ───
+  &__badge {
+    display: inline-block;
+    width: fit-content;
+    background: #f0a8c8;
+    color: #2a1524;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+
+    &--alt {
+      background: #c8e6c9;
+      color: #1b5e20;
+    }
+  }
+
+  // ─── Title ───
   &__name {
     font-family: var(--font-body);
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 800;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
     color: var(--color-dark);
-    line-height: 1.1;
-    margin: 0;
+    line-height: 1.05;
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.02em;
   }
 
+  // ─── Description ───
   &__desc {
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    color: rgba(0, 0, 0, 0.65);
     line-height: 1.6;
-    margin: 0.25rem 0 0.5rem;
-    max-width: 400px;
+    margin: 0 0 0.75rem;
+    max-width: 380px;
   }
 
-  &__meta {
-    margin: 0.25rem 0;
-  }
-
-  &__price {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--color-primary);
-  }
-
+  // ─── Buttons ───
   &__actions {
     display: flex;
-    gap: 1rem;
+    gap: 0.85rem;
     align-items: center;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
   }
 
   &__btn {
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     cursor: pointer;
     transition: all var(--transition-base);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
+    border-radius: 50px;
+    padding: 0.7rem 1.75rem;
 
+    // "Learn More / Más Info" — outline style
+    &--outline {
+      background: transparent;
+      color: var(--color-dark);
+      border: 2px solid var(--color-dark);
+
+      &:hover {
+        background: var(--color-dark);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+    }
+
+    // "Order Now" — solid dark
     &--order {
       background: var(--color-dark);
       color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 0.7rem 1.8rem;
+      border: 2px solid var(--color-dark);
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 
       &:hover {
         background: #1a2942;
+        border-color: #1a2942;
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
       }
     }
   }
 
   // ─── Responsive ───
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
     min-height: auto;
+    overflow: hidden; // contain on mobile
+    border-radius: 20px;
 
     &--reverse {
       .showcase-card__media {
@@ -278,20 +374,41 @@
     }
 
     &__media {
-      min-height: 250px;
-      max-height: 300px;
+      padding: 2rem 1.5rem;
+      justify-content: center;
+    }
+
+    &__image {
+      margin-left: 0;
+      max-width: 280px;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.14));
     }
 
     &__content {
-      padding: 2rem 1.5rem;
+      padding: 1.5rem 1.75rem 2rem;
     }
 
     &__name {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+    }
+
+    &__desc {
+      font-size: 0.88rem;
+    }
+
+    &__actions {
+      gap: 0.65rem;
+    }
+
+    &__btn {
+      padding: 0.6rem 1.4rem;
+      font-size: 0.82rem;
     }
   }
 }
 
 .hide-mobile {
-  @media (max-width: 560px) { display: none; }
+  @media (max-width: 560px) {
+    display: none;
+  }
 }

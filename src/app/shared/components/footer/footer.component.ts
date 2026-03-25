@@ -10,7 +10,7 @@ export class FooterComponent {
   currentYear = new Date().getFullYear();
 
   socialLinks = [
-    { icon: 'instagram', url: 'https://instagram.com/akora.reposteria', label: 'Instagram' },
+    { icon: 'instagram', url: 'https://www.instagram.com/akorareposteria/', label: 'Instagram' },
     { icon: 'facebook', url: 'https://facebook.com/akorareposteria', label: 'Facebook' },
     { icon: 'tiktok', url: 'https://tiktok.com/@akora.reposteria', label: 'TikTok' },
   ];
